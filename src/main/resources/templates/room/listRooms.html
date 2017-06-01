@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8"></meta>
+	<title th:text="|${#temporals.format(date, 'yyyy/M/d')}の会議室|">Insert title here</title>
+</head>
+<body>
+	<h3>会議室</h3>
+	<a th:href="@{'/rooms/' + ${date.minusDays(1)}}">&lt; 前日</a>
+	<span th:text="|${#temporals.format(date, 'yyyy/M/d')}の会議室|">今日</span>
+	<a th:href="@{'/rooms/' + ${date.plusDays(1)}}">&gt; 翌日</a>
+
+	<ul>
+		<li th:each="room: ${rooms}">
+			<a th:href="@{'/reservations/' + ${date} + '/' + ${room.meetingRoom.roomId}}" th:text="${room.meetingRoom.roomName}"></a>
+		</li>
+	</ul>
+</body>
+</html>
