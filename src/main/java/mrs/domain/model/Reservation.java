@@ -73,7 +73,7 @@ public class Reservation implements Serializable {
 	// 予約時間の重複チェック
 	public boolean overlap(Reservation target) {
 		// 部屋idと予約日付が一致しなければ重複していない
-		if(!Objects.equals(reservableRoom.getReservableRoomId(), target.getReservableRoom())){
+		if(!Objects.equals(reservableRoom.getReservableRoomId(), target.reservableRoom.getReservableRoomId())){
 			return false;
 		}
 		// 開始時刻と終了時刻が一致する場合は重複している
